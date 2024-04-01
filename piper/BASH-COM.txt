@@ -1,0 +1,5 @@
+Command to make Piper say anything from Bash:
+echo '<your speech here>' | piper --model piper/voices/en_US/en_US-lessac-medium.onnx | aplay -r 22050 -f S16_LE -t raw -
+
+And to use `aplay' to play an existing .wav audio file generated with Piper:
+aplay -r 22050 -f S16_LE -t wav path/to/audio.wav

@@ -1,0 +1,4 @@
+https://prod.liveshare.vsengsaas.visualstudio.com/join?B2717CC435AE7714878308FE59F37B6E6FF0
+
+GitHub for Piper by rhasspy:
+https://github.com/rhasspy/piper

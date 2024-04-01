@@ -1,0 +1,30 @@
+
+import RPi.GPIO as GPIO
+import time
+
+# Setup the GPIO mode
+GPIO.setmode(GPIO.BOARD)
+
+# Setup the pin numbers - Change these if your setup is different
+button_pin = 11
+led_pin = 13
+
+# Setup the button and LED pins
+GPIO.setup(button_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)  # Button pin set as input w/ pull-up
+
+
+GPIO.setup(led_pin, GPIO.OUT)  # LED pin set as output
+
+try:
+    while True:  # Run forever
+        button_state = GPIO.input(button_pin)  # Read the button state
+        if button_state == False:  # Check if button is pressed
+            GPIO.output(led_pin, True)  # Turn on LED
+            while GPIO.input(button_pin) == False:  # Wait for button to be released
+                time.sleep(0.1)  # Delay to avoid bouncing
+        GPIO.output(led_pin, False)  # Turn off LED
+except KeyboardInterrupt:
+    GPIO.cleanup()  # Clean up GPIO on CTRL+C exit
+except:
+    GPIO.cleanup()  # Clean up GPIO on any other exit
+

@@ -1,0 +1,3 @@
+In `/home/pi/team3/':
+$ source env/bin/activate  <--  activate python virtual environment
+$ deactivate  <--  deactivate python virtual environment

@@ -1,0 +1,38 @@
+|	NFC		|	pi board pins	|
+|-----------|-------------------|
+|	GND		|	ground (PIN 6)	|
+|	VCC		|	5V (PIN 4)		|
+|	TXD		|	I2C SDA (PIN 3)	|
+|	RXD		|	I2C SCL (PIN 5)	|
+|-------------------------------|
+
+sudo raspi-config -> interface options -> I2C (enable)
+
+**may need to adjust switches on nfc board
+00 = hsu
+10 = i2c <--this one
+01 = sp1
+
+i2cdetect -y 1
+**This should output a grid that shows the i2c address
+
+sudo apt install libnfc6 libnfc-bin libnfc-examples
+
+sudo nano /etc/nfc/libnfc.config
+**add to end of file
+device.name = "PN532"
+device.connstring = "pn532_i2c:/dev/i2c-1"
+
+nfc-scan-device
+**should list device
+
+
+nfc-poll
+
+sudo apt-get install python3-pyaudio portaudio19-dev
+pip install pyaudio
+pip install gpiozero --upgrade
+
+git clone https://github.com/mholgatem/py532lib --depth 1
+
+pypi.org/search is also useful for looking up packages to install with pip since `pip search' has been deprecated for whatever reason
